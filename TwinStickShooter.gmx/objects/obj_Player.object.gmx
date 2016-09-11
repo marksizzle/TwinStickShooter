@@ -32,6 +32,8 @@ pad_num = 0;
 
 dir = 0;
 can_shoot = true;
+
+script_execute(wave_1);
 </string>
           </argument>
         </arguments>

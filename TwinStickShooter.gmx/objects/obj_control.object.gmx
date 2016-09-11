@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (var i = 0; i &lt; 4; i++;)
+            <string>//Randomize the random number seed
+randomize();
+
+for (var i = 0; i &lt; 4; i++;)
 {
 player[i] = noone;
 if gamepad_is_connected(i) show_debug_message("Gamepad " + string(i) + " Connected");
@@ -67,7 +70,7 @@ case "gamepad discovered":                     // A game pad has been discovered
     if !(instance_exists(player[pad]))         // Check to see if an instance is associated with this pad index
         {
         // Create a player object and assign it a pad number
-        player[pad] = instance_create(64 + random(room_width - 128), 64 + random(room_height - 128), obj_player);
+        player[pad] = instance_create(irandom_range(96, room_width - 128), irandom_range(96, room_height - 128), obj_player);
         with (player[pad])
             {
             image_index = pad;
@@ -112,8 +115,8 @@ case "gamepad lost":                           // Gamepad has been removed or ot
             <string>
 for (var i = 0; i &lt; 2; i++;)
 {
-var xx = 32;
-var yy = 32 + (160 * i);
+var xx = 128;
+var yy = 768 + (160 * i);
 if gamepad_is_connected(i)
     {
     draw_text(xx, yy, "Gamepad Slot - " + string(i));

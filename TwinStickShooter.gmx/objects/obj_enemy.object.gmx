@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*state = e_state.idle;
-vsp = 0;
+            <string>vsp = 0;
 hsp = 0;
+state = e_state.chase;
+
 </string>
           </argument>
         </arguments>
@@ -50,42 +51,34 @@ hsp = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*switch (state)
-{
-    case e_state.idle:
-    {
-        hsp = 0;
-        vsp = (min(7,vsp+0.05));
-        if (distance_to_object(obj_player) &lt; 96) state = e_state.chase;
-    }
-    break;
-    case e_state.chase:
-    {
-        dir = sign(obj_player.x - x);
-        hsp = dir * 2;
-        vsp = (min(7,vsp+0.05));
-        if (distance_to_object(obj_player) &gt; 128) state = e_state.idle;
+            <string>switch (state) {
+    case e_state.chase: {
+        dir_x = sign(obj_player.x - x);
+        hsp = dir_x * 1.5;
+        dir_y = sign(obj_player.y - y);
+        vsp = dir_y * 1.5;
     }
     break;
 }
-/*
+
 //Horizontal Collision
 if (place_meeting(round(x+hsp),round(y),obj_wall))
 {
     while(!place_meeting(round(x+sign(hsp)),round(y),obj_wall)) x += sign(hsp);
     hsp = 0;
 }
-*/
-//x += hsp;
-/*
+
+x += hsp;
+
 //Vertical Collision
 if (place_meeting(round(x),round(y+vsp),obj_wall))
 {
     while(!place_meeting(round(x),round(y+sign(vsp)),obj_wall)) y += sign(vsp);
     vsp = 0;
 }
-*/
-//y += vsp;
+
+y += vsp;
+
 
 </string>
           </argument>
