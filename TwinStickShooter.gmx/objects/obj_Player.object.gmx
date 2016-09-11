@@ -79,57 +79,60 @@ can_shoot = true;
             <kind>1</kind>
             <string>/// Move, turn and shoot
 
-// Move the player ////////////////////////////////////////////////////////////////////////////
-
-// Using the left axis controller
+//Using the left axis stick to move the player
 var h_move = gamepad_axis_value(pad_num, gp_axislh);
 var v_move = gamepad_axis_value(pad_num, gp_axislv);
 
-if h_move != 0 || v_move != 0
-{
-x += h_move * 5.5;
-y += v_move * 5.5;
+//Check for collisions with the wall by looking ahead to where you will be moving
+//If there is a wall there then drop the speed to 0 and slowly move the player object towards the wall
+if h_move != 0 || v_move != 0 {
+
+    if (place_meeting(x+(h_move*5),y,obj_wall)) {
+       while (!place_meeting(x+sign(h_move),y,obj_wall)) {
+             x+=sign(h_move * 5);
+       }
+       h_move = 0;
+    }
+    x += (h_move * 5);
+    
+    if (place_meeting(x,y+(v_move*5),obj_wall)) {
+       while (!place_meeting(x,y+sign(v_move),obj_wall)) {
+             y+=sign(v_move * 5);
+       }
+       v_move = 0;
+    }
+    y += (v_move * 5);
 }
 
-// Using the D-Pad
-/*
-var h_move = gamepad_button_check(pad_num, gp_padr) - gamepad_button_check(pad_num, gp_padl)
-var v_move = gamepad_button_check(pad_num, gp_padd) - gamepad_button_check(pad_num, gp_padu)
-
-if ((abs(h_move) &gt; 0) || (abs(v_move) &gt; 0))
-{
-x += h_move * 4;
-y += v_move * 4;
-}
-*/
-
-// Turn the player ////////////////////////////////////////////////////////////////////////////
+//Using the right axis stick to turn and shoot
 var h_point = gamepad_axis_value(pad_num, gp_axisrh);
 var v_point = gamepad_axis_value(pad_num, gp_axisrv);
 
 
-if ((abs(h_point) &gt; 0) || (abs(v_point) &gt; 0))
-{
-    var pdir = point_direction(0, 0, h_point, v_point);
-    var dif = angle_difference(pdir, image_angle);
-    image_angle += median(-20, dif, 20);
-    
+if ((abs(h_point) &gt; 0) || (abs(v_point) &gt; 0)) {
+   var pdir = point_direction(0, 0, h_point, v_point);
+   var dif = angle_difference(pdir, image_angle);
+   image_angle += median(-20, dif, 20);
+
     var r_stick = ((abs(h_point)) + (abs(v_point)));
     var rate = 1 - r_stick;
 
-    if can_shoot &amp;&amp; rate &lt; 1
-    {
-        with (instance_create(x, y, obj_bullet))
-            {
+    if can_shoot &amp;&amp; rate &lt; 10 {
+       with (instance_create(x, y, obj_bullet)) {
             speed = 10;
             direction = other.image_angle;
             image_angle = direction;
             }
-        can_shoot = false;
-        alarm[0] = max(7, (room_speed * rate));
+       can_shoot = false;
+       alarm[0] = 10;
     }
 }
 
+
+// Collision between player and wall ///////////////////////////////////////////////////////////
+//if (collision_point(x,y,obj_wall,false,false)) {
+//   instance_destroy();
+//   }
 </string>
           </argument>
         </arguments>

@@ -110,7 +110,7 @@ case "gamepad lost":                           // Gamepad has been removed or ot
           <argument>
             <kind>1</kind>
             <string>
-for (var i = 0; i &lt; 4; i++;)
+for (var i = 0; i &lt; 2; i++;)
 {
 var xx = 32;
 var yy = 32 + (160 * i);
