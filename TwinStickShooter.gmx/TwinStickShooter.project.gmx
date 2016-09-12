@@ -37,7 +37,6 @@
     <object>objects\obj_player_2</object>
     <object>objects\obj_p2_freeze</object>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>

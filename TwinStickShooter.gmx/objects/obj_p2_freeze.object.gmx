@@ -77,6 +77,8 @@ if gamepad_button_check_released(1,global.a_but) &amp;&amp; global.freeze_cool_d
    with (obj_enemy) {
         global.enemy_state = e_state.idle;
         image_index = 1;
+        //Added image speed of 0 to stop images from changing rapidly
+        image_speed = 0;
    }
    if (alarm[0] = -1) alarm = room_speed * 3;
    global.freeze_cool_down = 0;
