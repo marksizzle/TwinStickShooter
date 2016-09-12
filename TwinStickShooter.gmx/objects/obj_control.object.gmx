@@ -34,8 +34,7 @@ player[i] = noone;
 if gamepad_is_connected(i) show_debug_message("Gamepad " + string(i) + " Connected");
 }
 
-draw_set_font(font0);
-draw_set_colour(c_white);
+
 </string>
           </argument>
         </arguments>
@@ -70,7 +69,12 @@ case "gamepad discovered":                     // A game pad has been discovered
     if !(instance_exists(player[pad]))         // Check to see if an instance is associated with this pad index
         {
         // Create a player object and assign it a pad number
-        player[pad] = instance_create(irandom_range(96, room_width - 128), irandom_range(96, room_height - 128), obj_player);
+        if pad == 0 {
+           player[pad] = instance_create(irandom_range(96, room_width - 128), irandom_range(96, room_height - 128), obj_player);
+        }
+        if pad == 1 {
+           player[pad] = instance_create(32,128,obj_player_2);
+        }
         with (player[pad])
             {
             image_index = pad;
@@ -112,7 +116,9 @@ case "gamepad lost":                           // Gamepad has been removed or ot
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>draw_set_font(font0);
+draw_set_colour(c_white);
+
 for (var i = 0; i &lt; 2; i++;)
 {
 var xx = 128;

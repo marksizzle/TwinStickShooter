@@ -12,6 +12,7 @@
     <sprite>sprites\sprite4</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_a_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -22,6 +23,8 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\font_score</font>
+    <font>fonts\font_wave</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_control</object>
@@ -29,7 +32,12 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_score</object>
+    <object>objects\obj_waves</object>
+    <object>objects\obj_player_2</object>
+    <object>objects\obj_p2_freeze</object>
   </objects>
+  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>

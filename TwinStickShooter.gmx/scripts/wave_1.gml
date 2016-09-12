@@ -1,3 +1,4 @@
+global.wave += 1;
 var i;
 for (i=0; i<5; i+=1) {
     var xx;
