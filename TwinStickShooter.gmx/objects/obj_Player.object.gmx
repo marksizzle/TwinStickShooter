@@ -128,12 +128,6 @@ if ((abs(h_point) &gt; 0) || (abs(v_point) &gt; 0)) {
        alarm[0] = 10;
     }
 }
-
-
-// Collision between player and wall ///////////////////////////////////////////////////////////
-//if (collision_point(x,y,obj_wall,false,false)) {
-//   instance_destroy();
-//   }
 </string>
           </argument>
         </arguments>

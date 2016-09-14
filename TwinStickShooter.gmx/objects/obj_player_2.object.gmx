@@ -35,7 +35,12 @@ global.y_but = gp_face4
 var global.freeze_cool_down = 100;
 
 //Create player 2's abilities
-instance_create(16,128,obj_p2_freeze);
+var xx = room_width/6;
+var yy = 16;
+instance_create(xx,yy,obj_arm_1);
+instance_create(xx*2,yy,obj_arm_2);
+instance_create(xx*3,yy,obj_arm_3);
+instance_create(xx*4,yy,obj_arm_4);
 
 
 </string>

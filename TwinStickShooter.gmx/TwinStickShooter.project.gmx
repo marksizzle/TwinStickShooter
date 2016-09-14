@@ -13,6 +13,9 @@
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_a_button</sprite>
+    <sprite>sprites\spr_b_button</sprite>
+    <sprite>sprites\spr_x_button</sprite>
+    <sprite>sprites\spr_y_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -35,7 +38,10 @@
     <object>objects\obj_score</object>
     <object>objects\obj_waves</object>
     <object>objects\obj_player_2</object>
-    <object>objects\obj_p2_freeze</object>
+    <object>objects\obj_arm_1</object>
+    <object>objects\obj_arm_2</object>
+    <object>objects\obj_arm_3</object>
+    <object>objects\obj_arm_4</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
