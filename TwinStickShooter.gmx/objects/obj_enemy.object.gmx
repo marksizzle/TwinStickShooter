@@ -55,14 +55,22 @@ global.enemy_state = e_state.chase;
     case e_state.chase: {
          image_index = 0
          dir_x = sign(obj_player.x - x);
-         hsp = dir_x * 1.5;
+         hsp = dir_x * 2.5;
          dir_y = sign(obj_player.y - y);
-         vsp = dir_y * 1.5;
+         vsp = dir_y * 2.5;
     }
     break;
     case e_state.idle: {
          hsp = 0;
          vsp = 0;
+    }
+    break;
+    case e_state.slowtime: {
+         image_index = 0;
+         dir_x = sign(obj_player.x - x);
+         hsp = dir_x * 1.25;
+         dir_y = sign(obj_player.y - y);
+         vsp = dir_y * 1.25;
     }
     break;
 }

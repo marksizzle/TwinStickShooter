@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = 0;
+            <string>global.player_state = p_ability.normal;
+
+image_index = 0;
 image_speed = 0;
 
 pad_num = 0;
@@ -117,17 +119,43 @@ if ((abs(h_point) &gt; 0) || (abs(v_point) &gt; 0)) {
 
     var r_stick = ((abs(h_point)) + (abs(v_point)));
     var rate = 1 - r_stick;
-
     if can_shoot &amp;&amp; rate &lt; 10 {
        with (instance_create(x, y, obj_bullet)) {
             speed = 10;
             direction = other.image_angle;
             image_angle = direction;
             }
+//THIS CODE NEEDS REFACTORED
+//This is a quick fix to get a triple shot working
+       if global.player_state = p_ability.threeshot {
+          with (instance_create(x, y, obj_bullet)) {
+               speed = 10;
+               direction = other.image_angle;
+               image_angle = direction;
+          }
+          with (instance_create(x, y, obj_bullet)) {
+               speed = 10;
+               direction = other.image_angle+45;
+               image_angle = direction;
+          }
+          with (instance_create(x, y, obj_bullet)) {
+               speed = 10;
+               direction = other.image_angle-45;
+               image_angle = direction;
+          }
+       }
        can_shoot = false;
        alarm[0] = 10;
     }
 }
+
+
+//Check for collision with enemies
+//If there is a collision then destroy the player and end the game
+if (collision_point(x,y,obj_enemy,false,false)) {
+   instance_destroy();
+   room_goto_next();
+   }
 </string>
           </argument>
         </arguments>

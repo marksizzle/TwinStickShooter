@@ -33,6 +33,7 @@ global.y_but = gp_face4
 
 //Initialize cooldowns
 var global.freeze_cool_down = 100;
+var global.slow_cool_down = 100;
 
 //Create player 2's abilities
 var xx = room_width/6;

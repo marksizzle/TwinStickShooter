@@ -13,8 +13,19 @@
   <code>enum e_state
     {
     idle,
-    chase
-    }</code>
+    chase,
+    shoot,
+    slowtime
+    }
+    
+enum p_ability
+     {
+     normal,
+     sspeed,
+     freeze,
+     threeshot,
+     slowtime
+     }</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

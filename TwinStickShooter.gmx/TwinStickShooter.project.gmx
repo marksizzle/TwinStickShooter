@@ -27,6 +27,7 @@
   <fonts name="fonts">
     <font>fonts\font0</font>
     <font>fonts\font_score</font>
+    <font>fonts\font_final_score</font>
     <font>fonts\font_wave</font>
   </fonts>
   <objects name="objects">
@@ -36,6 +37,7 @@
     <object>objects\obj_enemy</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_score</object>
+    <object>objects\obj_final_score</object>
     <object>objects\obj_waves</object>
     <object>objects\obj_player_2</object>
     <object>objects\obj_arm_1</object>
@@ -45,6 +47,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

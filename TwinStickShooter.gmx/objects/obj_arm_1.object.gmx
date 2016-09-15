@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//var global.free_cool_down = 100;
+            <string>var global.free_cool_down = 100;
 </string>
           </argument>
         </arguments>
