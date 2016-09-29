@@ -16,6 +16,7 @@
     <sprite>sprites\spr_b_button</sprite>
     <sprite>sprites\spr_x_button</sprite>
     <sprite>sprites\spr_y_button</sprite>
+    <sprite>sprites\spr_main_menu</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -23,10 +24,12 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\wave_1.gml</script>
+    <script>scripts\scr_menu.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
     <font>fonts\font_score</font>
+    <font>fonts\fnt_menu</font>
     <font>fonts\font_final_score</font>
     <font>fonts\font_wave</font>
   </fonts>
@@ -44,10 +47,12 @@
     <object>objects\obj_arm_2</object>
     <object>objects\obj_arm_3</object>
     <object>objects\obj_arm_4</object>
+    <object>objects\obj_main_menu</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_main_menu</room>
     <room>rooms\room0</room>
-    <room>rooms\room2</room>
+    <room>rooms\rm_final_score</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
