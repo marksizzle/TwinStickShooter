@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Randomize the random number seed
+            <string>//This is a test comment
+//Randomize the random number seed
 randomize();
 
 for (var i = 0; i &lt; 4; i++;)
