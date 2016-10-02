@@ -30,10 +30,17 @@
 image_index = 0;
 image_speed = 0;
 
-pad_num = 0;
+if global.p1select == 0 {
+   pad_num = 0;
+}
 
+if global.p2select == 0 {
+   pad_num = 1;
+}
 dir = 0;
 can_shoot = true;
+
+
 
 </string>
           </argument>

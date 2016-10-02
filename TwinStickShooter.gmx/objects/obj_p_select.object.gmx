@@ -30,16 +30,29 @@ randomize();
 
 for (var i = 0; i &lt; 2; i++;) {
     player[i] = noone;
-    gamepad_set_axis_deadzone(i, 0.5);       // Set the "deadzone" for the axis
-    gamepad_set_button_threshold(i, 0.1);    // Set the "threshold" for the triggers
 }
 
-if !instance_exists(obj_player) {
-   player[0] = instance_create(irandom_range(96, room_width - 128), irandom_range(96, room_height - 128), obj_player);
+//Accept input from player
+global.a_but = gp_face1
+global.b_but = gp_face2
+global.x_but = gp_face3
+global.y_but = gp_face4
+global.start_but = gp_start
+
+//Start the controller symbols in the middle of the screen
+var global.p1select = 1;
+var global.p2select = 1;
+
+//Global var to keep track of ready/not ready
+var global.p1ready = false;
+var global.p2ready = false;
+
+if !instance_exists(obj_p1_ctrl) {
+   player[0] = instance_create((room_width/2), (room_height/2),obj_p1_ctrl);
 }
 
-if !instance_exists(obj_player_2) {
-   player[1] = instance_create(32,128,obj_player_2);
+if !instance_exists(obj_p2_ctrl) {
+   player[1] = instance_create((room_width/2), (room_height/2+256),obj_p2_ctrl);
 }
 </string>
           </argument>
@@ -63,10 +76,7 @@ if !instance_exists(obj_player_2) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_message("Event = " + async_load[? "event_type"]);        // Debug cocde so you can see which event has been
-show_debug_message("Pad = " + string(async_load[? "pad_index"]));   // triggered and the pad associated with it.
-
-switch(async_load[? "event_type"])             // Parse the async_load map to see which event has been triggered
+            <string>switch(async_load[? "event_type"])             // Parse the async_load map to see which event has been triggered
 {
 case "gamepad discovered":                     // A game pad has been discovered
     var pad = async_load[? "pad_index"];       // Get the pad index value from the async_load map
@@ -76,10 +86,12 @@ case "gamepad discovered":                     // A game pad has been discovered
         {
         // Create a player object and assign it a pad number
         if pad == 0 {
-           player[pad] = instance_create(irandom_range(96, room_width - 128), irandom_range(96, room_height - 128), obj_player);
+           //create a p1 controller in the middle of the screen
+           player[pad] = instance_create((room_width/2), (room_height/2),obj_p1_ctrl);
         }
         if pad == 1 {
-           player[pad] = instance_create(32,128,obj_player_2);
+           //create a p2 controller in the middle of the screen
+           player[pad] = instance_create((room_width/2), (room_height/2+256),obj_p2_ctrl);
         }
         with (player[pad])
             {
@@ -122,28 +134,31 @@ case "gamepad lost":                           // Gamepad has been removed or ot
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font0);
-draw_set_colour(c_white);
+            <string>//Set font &amp; color
+draw_set_color(c_white);
+draw_set_font(fnt_8bit);
+draw_set_halign(fa_center);
 
-for (var i = 0; i &lt; 2; i++;)
-{
-var xx = 128;
-var yy = 768 + (160 * i);
-if gamepad_is_connected(i)
-    {
-    draw_text(xx, yy, "Gamepad Slot - " + string(i));
-    draw_text(xx, yy + 20, "Gamepad Type - " + string(gamepad_get_description(i)));
-    draw_text(xx, yy + 40, "Left H Axis - " + string(gamepad_axis_value(i, gp_axislh)));
-    draw_text(xx, yy + 60, "Left V Axis - " + string(gamepad_axis_value(i, gp_axislv)));
-    draw_text(xx, yy + 80, "Right H Axis - " + string(gamepad_axis_value(i, gp_axisrh)));
-    draw_text(xx, yy + 100, "Right V Axis - " + string(gamepad_axis_value(i, gp_axisrv)));   
-    draw_text(xx, yy + 120, "Fire Rate - " + string(gamepad_button_value(i, gp_shoulderrb)));
-    }
-else
-    {
-    draw_text(xx, yy, "Gamepad Slot - " + string(i));
-    draw_text(xx, yy + 20, "Gamepad not connected" + string(gamepad_get_description(i)));
-    }
+//Draw Feline Logo Text
+draw_text((room_width/6),(room_height/10),"Feline");
+
+//Draw Armor Logo Text
+draw_text((room_width/2),(room_height/10),"Role Select");
+
+//Draw Armor Logo Text
+draw_text((room_width/1.2),(room_height/10),"Armor");
+
+if global.p1ready == true {
+   draw_sprite(spr_ready, 0, obj_p1_ctrl.x, obj_p1_ctrl.y + 64);
+}
+
+if global.p2ready == true {
+   draw_sprite(spr_ready, 0, obj_p2_ctrl.x, obj_p2_ctrl.y + 64);
+}
+
+if global.p1ready == true &amp;&amp; global.p2ready == true {
+   draw_set_color(c_red);
+   draw_text(room_width/2,room_height/2,"PRESS START");
 }
 </string>
           </argument>

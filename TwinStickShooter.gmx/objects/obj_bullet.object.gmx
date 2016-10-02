@@ -33,13 +33,13 @@ if inst != noone {
    with(inst) instance_destroy();
    instance_destroy();
    global.points += 5;
-   }
+}
 
 //Check for collision with the wall
 //If there is a collision then destroy the bullet
 if (collision_point(x,y,obj_wall,false,false)) {
    instance_destroy();
-   }
+}
 </string>
           </argument>
         </arguments>

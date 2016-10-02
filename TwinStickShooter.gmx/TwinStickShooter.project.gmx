@@ -17,6 +17,11 @@
     <sprite>sprites\spr_x_button</sprite>
     <sprite>sprites\spr_y_button</sprite>
     <sprite>sprites\spr_main_menu</sprite>
+    <sprite>sprites\spr_p1_ctrl</sprite>
+    <sprite>sprites\spr_p2_ctrl</sprite>
+    <sprite>sprites\spr_armor_logo</sprite>
+    <sprite>sprites\spr_feline_logo</sprite>
+    <sprite>sprites\spr_ready</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -32,26 +37,39 @@
     <font>fonts\fnt_menu</font>
     <font>fonts\font_final_score</font>
     <font>fonts\font_wave</font>
+    <font>fonts\fnt_8bit</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_control</object>
-    <object>objects\obj_player</object>
-    <object>objects\obj_bullet</object>
-    <object>objects\obj_enemy</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_score</object>
-    <object>objects\obj_final_score</object>
-    <object>objects\obj_waves</object>
-    <object>objects\obj_player_2</object>
-    <object>objects\obj_arm_1</object>
-    <object>objects\obj_arm_2</object>
-    <object>objects\obj_arm_3</object>
-    <object>objects\obj_arm_4</object>
-    <object>objects\obj_main_menu</object>
+    <objects name="rm_main_menu">
+      <object>objects\obj_main_menu</object>
+    </objects>
+    <objects name="rm_play_select">
+      <object>objects\obj_p_select</object>
+      <object>objects\obj_p1_ctrl</object>
+      <object>objects\obj_p2_ctrl</object>
+    </objects>
+    <objects name="rm_main">
+      <object>objects\obj_player_2</object>
+      <object>objects\obj_arm_4</object>
+      <object>objects\obj_arm_3</object>
+      <object>objects\obj_arm_2</object>
+      <object>objects\obj_arm_1</object>
+      <object>objects\obj_wall</object>
+      <object>objects\obj_waves</object>
+      <object>objects\obj_score</object>
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_control</object>
+      <object>objects\obj_player</object>
+      <object>objects\obj_bullet</object>
+    </objects>
+    <objects name="rm_final_score">
+      <object>objects\obj_final_score</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main_menu</room>
-    <room>rooms\room0</room>
+    <room>rooms\rm_play_select</room>
+    <room>rooms\rm_main</room>
     <room>rooms\rm_final_score</room>
   </rooms>
   <help>

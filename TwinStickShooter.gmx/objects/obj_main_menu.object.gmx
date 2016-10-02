@@ -25,13 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>	menu[0] = "Start";
-	menu[1] = "Options";
-	menu[2] = "Credits";
-	menu[3] = "Quit";
+            <string>menu[0] = "Start";
+menu[1] = "Options";
+menu[2] = "Credits";
+menu[3] = "Quit";
 
-	space = 64;
-	mpos = 0;
+space = 64;
+mpos = 0;
+
+for (var i = 0; i &lt; 2; i++;) {
+    player[i] = noone;
+}
 </string>
           </argument>
         </arguments>
@@ -56,27 +60,27 @@
             <kind>1</kind>
             <string>var move = 0;
 
-	//Make the move variable either 1 or -1 based upon user input
-	move -= max(keyboard_check_pressed(vk_up), keyboard_check_pressed(ord("W")), gamepad_button_check_pressed(0, gp_padu), 0);
-	move += max(keyboard_check_pressed(vk_down), keyboard_check_pressed(ord("S")), gamepad_button_check_pressed(0, gp_padd), 0);
+//Make the move variable either 1 or -1 based upon user input
+move -= max(gamepad_button_check_pressed(1, gp_padu), gamepad_button_check_pressed(0, gp_padu), 0);
+move += max(gamepad_button_check_pressed(1, gp_padd), gamepad_button_check_pressed(0, gp_padd), 0);
 
-	//Check the value of move
-	//If it is non-zero then move the menu
-	if (move != 0)
-	   {
-	   mpos += move;
-	   //audio_play_sound(Jump_05,9,0);
-	   if (mpos &lt; 0) mpos = array_length_1d(menu) - 1;
-	   if (mpos &gt; array_length_1d(menu) - 1) mpos = 0;
-	   }
-	   
-	var push;
-	push = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), gamepad_button_check_pressed(0, gp_face1), 0);
-	   if (push == 1) 
-	   {
-	   //audio_play_sound(Jump_10,9,0);
-	    scr_menu();
-	   }
+//Check the value of move
+//If it is non-zero then move the menu
+if (move != 0)
+   {
+   mpos += move;
+   //audio_play_sound(Jump_05,9,0);
+   if (mpos &lt; 0) mpos = array_length_1d(menu) - 1;
+   if (mpos &gt; array_length_1d(menu) - 1) mpos = 0;
+   }
+   
+var push;
+push = max(gamepad_button_check_pressed(1, gp_face1), gamepad_button_check_pressed(0, gp_face1), 0);
+   if (push == 1) 
+   {
+   //audio_play_sound(Jump_10,9,0);
+    scr_menu();
+   }
 </string>
           </argument>
         </arguments>
